@@ -1,53 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import useNavbar from "@/saborpage/hooks/useNavbar";
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const location = useLocation();
-    const isHome = location.pathname === "/";
-
-    const handleReserveClick = () => {
-        const section = document.querySelector("#reservas");
-        section?.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-
-    const handleSectionNavigate = useCallback((hash: string) => {
-        if (!hash) return;
-        const section = document.querySelector(hash);
-        section?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, []);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    useEffect(() => {
-        if (location.hash) {
-            handleSectionNavigate(location.hash);
-        }
-    }, [location, handleSectionNavigate]);
-
-    useEffect(() => {
-        setIsMobileMenuOpen(false);
-    }, [location.pathname]);
-
-    const handleToggleMobileMenu = () => {
-        setIsMobileMenuOpen((prev) => !prev);
-    };
-
-    const handleMobileSectionNavigate = (hash: string) => {
-        handleSectionNavigate(hash);
-        setIsMobileMenuOpen(false);
-    };
+    const {
+        isScrolled,
+        isMobileMenuOpen,
+        isHome,
+        handleReserveClick,
+        handleSectionNavigate,
+        handleMobileSectionNavigate,
+        handleToggleMobileMenu,
+        closeMobileMenu,
+    } = useNavbar();
 
     return (
         <nav
@@ -125,7 +92,7 @@ const Navbar = () => {
                             aria-label="Reservar ahora"
                             onClick={() => {
                                 handleReserveClick();
-                                setIsMobileMenuOpen(false);
+                                closeMobileMenu();
                             }}
                         >
                             Reservar
@@ -176,7 +143,7 @@ const Navbar = () => {
                                 <Link
                                     to="/menu"
                                     className="text-lg hover:text-accent transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={closeMobileMenu}
                                 >
                                     Menú
                                 </Link>
@@ -186,14 +153,14 @@ const Navbar = () => {
                                 <Link
                                     to="/"
                                     className="text-lg hover:text-accent transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={closeMobileMenu}
                                 >
                                     Home
                                 </Link>
                                 <Link
                                     to="/menu"
                                     className="text-lg hover:text-accent transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={closeMobileMenu}
                                 >
                                     Menú
                                 </Link>
@@ -207,7 +174,7 @@ const Navbar = () => {
                             aria-label="Reservar ahora"
                             onClick={() => {
                                 handleReserveClick();
-                                setIsMobileMenuOpen(false);
+                                closeMobileMenu();
                             }}
                         >
                             Reservar Ahora

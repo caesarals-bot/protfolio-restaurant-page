@@ -10,6 +10,9 @@ import lasanaCarne from "@/assets/lasana-carne.jpg";
 import tartaQueso from "@/assets/tarta-queso.jpg";
 import volcanChocolate from "@/assets/volcan-chocolate.jpg";
 import cremaCatalana from "@/assets/crema-catalana.jpg";
+import copaTinto from "@/assets/copa-tinto.webp";
+import limonadaArtesanal from "@/assets/limonada-artesanal.webp";
+import cafeEspresso from "@/assets/cafe-espresso.webp";
 import type { CategoryInfo, Dish } from "@/types/menu";
 
 export const categories: CategoryInfo[] = [
@@ -167,7 +170,7 @@ export const dishes: Dish[] = [
     price: 22.00,
     description: "Copa de vino tinto reserva D.O. Rioja, con cuerpo y gran carácter.",
     fullDescription: "Selección de vinos tintos reserva de la Denominación de Origen Rioja. Vinos con crianza en barrica de roble que aportan notas especiadas, frutos maduros y un final persistente. Maridaje perfecto para carnes rojas y quesos.",
-    image: "/placeholder.svg",
+    image: copaTinto,
     isSuggestion: false,
     isActive: true
   },
@@ -178,7 +181,7 @@ export const dishes: Dish[] = [
     price: 4.50,
     description: "Limonada natural con hierbabuena fresca y un toque de jengibre.",
     fullDescription: "Refrescante limonada preparada al momento con limones recién exprimidos, hierbabuena fresca del huerto, un toque de jengibre rallado, sirope artesanal y hielo picado. Una explosión de sabor y frescura.",
-    image: "/placeholder.svg",
+    image: limonadaArtesanal,
     isSuggestion: false,
     isActive: true,
     tagline: "Refrescante y natural"
@@ -190,7 +193,7 @@ export const dishes: Dish[] = [
     price: 2.50,
     description: "Café espresso italiano de granos 100% arábica, tostado artesanal.",
     fullDescription: "Espresso italiano elaborado con granos 100% arábica de origen único, tostados artesanalmente para resaltar notas de cacao, frutos secos y un final ligeramente dulce. Extraído con máquina profesional para garantizar la crema perfecta.",
-    image: "/placeholder.svg",
+    image: cafeEspresso,
     isSuggestion: false,
     isActive: true
   },

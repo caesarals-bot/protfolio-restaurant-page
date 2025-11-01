@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 import dish1 from "@/assets/dish-1.jpg";
 import dish2 from "@/assets/dish-2.jpg";
 import dish3 from "@/assets/dish-3.jpg";
@@ -104,8 +105,8 @@ const MenuCarousel = () => {
         </Carousel>
 
         <div className="text-center mt-12">
-          <Button variant="gold" size="lg">
-            Ver Menú Completo
+          <Button asChild variant="gold" size="lg">
+            <Link to="/menu">Ver Menú Completo</Link>
           </Button>
         </div>
       </div>

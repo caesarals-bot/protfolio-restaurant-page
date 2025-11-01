@@ -1,11 +1,11 @@
 
-
-import HomePage from "./landingPage/page/HomePage";
+import { RouterProvider } from "react-router";
+import { AppRouter } from "./router/App.router";
 
 function AppRestaurant() {
   return (
     <>
-      <HomePage />
+      <RouterProvider router={AppRouter} />
     </>
   )
 }

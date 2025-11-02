@@ -71,6 +71,12 @@ const Navbar = () => {
                             >
                                 Menú
                             </Link>
+                            <Link
+                                to="/sugerencias"
+                                className="text-primary-foreground hover:text-accent transition-colors"
+                            >
+                                Sugerencias
+                            </Link>
                         </div>
                     )}
 
@@ -163,6 +169,13 @@ const Navbar = () => {
                                     onClick={closeMobileMenu}
                                 >
                                     Menú
+                                </Link>
+                                <Link
+                                    to="/sugerencias"
+                                    className="text-lg hover:text-accent transition-colors"
+                                    onClick={closeMobileMenu}
+                                >
+                                    Sugerencias
                                 </Link>
                             </div>
                         )}

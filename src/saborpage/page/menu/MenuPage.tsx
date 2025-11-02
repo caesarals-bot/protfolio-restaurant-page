@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -7,36 +6,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { dishes, categories } from "@/data/menuData";
-import type { Category, Dish } from "@/types/menu";
+import useMenuPage from "@/saborpage/hooks/useMenuPage";
 import DishDetailModal from "./components/DishDetailModal";
 import DishCard from "./components/DishCard";
+import type { Category } from "@/types/menu";
 
 
 const MenuPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState<Category | "todos">(
-    "todos"
-  );
-  const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleCategoryChange = (category: Category | "todos") => {
-    setSelectedCategory(category);
-  };
-
-  const filteredDishes = dishes.filter((dish) => {
-    if (!dish.isActive) return false;
-    if (selectedCategory === "todos") return true;
-    return dish.category === selectedCategory;
-  });
-
-  const handleDishClick = (dish: Dish) => {
-    setSelectedDish(dish);
-    setIsModalOpen(true);
-  };
-
-  const currentCategoryLabel =
-    categories.find((c) => c.id === selectedCategory)?.label || "Todos los Platos";
+  const {
+    categories,
+    selectedCategory,
+    filteredDishes,
+    currentCategoryLabel,
+    handleCategoryChange,
+    handleDishClick,
+    selectedDish,
+    isModalOpen,
+    handleModalOpenChange,
+  } = useMenuPage();
 
   return (
     <div className="min-h-screen flex flex-col bg-linear-to-b from-[#0f0f0f] via-[#141414] to-[#050505] text-stone-100">
@@ -128,7 +115,7 @@ const MenuPage = () => {
       <DishDetailModal
         dish={selectedDish}
         open={isModalOpen}
-        onOpenChange={setIsModalOpen}
+        onOpenChange={handleModalOpenChange}
       />
     </div>
   );

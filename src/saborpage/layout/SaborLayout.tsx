@@ -4,7 +4,7 @@ import Footer from "../page/landingPage/component/Footer";
 
 const SaborLayout = () => {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen ">
             <Navbar />
                 <Outlet />
             <Footer />
